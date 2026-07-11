@@ -1,1 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sleep Calculator</title>
 
+<meta name="description" content="Free Sleep Calculator - Find the best time to sleep and wake up using 90-minute sleep cycles.">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+background:#1e293b;
+padding:30px;
+border-radius:18px;
+width:100%;
+max-width:420px;
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+p{
+text-align:center;
+margin-bottom:20px;
+color:#cbd5e1;
+}
+
+label{
+display:block;
+margin:15px 0 8px;
+}
+
+input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+width:100%;
+margin-top:20px;
+padding:14px;
+background:#22c55e;
+color:#fff;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+background:#16a34a;
+}
+
+.result{
+margin-top:25px;
+padding:15px;
+background:#334155;
+border-radius:10px;
+}
+
+.result h3{
+margin-bottom:10px;
+}
+
+.result ul{
+padding-left:20px;
+}
+
+.result li{
+margin:8px 0;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>😴 Sleep Calculator</h1>
+
+<p>Select your wake-up time</p>
+
+<label>Wake Up Time</label>
+
+<input type="time" id="wakeTime">
+
+<button onclick="calculateSleep()">
+Calculate Bedtime
+</button>
+
+<div class="result" id="result" style="display:none;">
+<h3>Best Time To Sleep</h3>
+<ul id="times"></ul>
+</div>
+
+</div>
+
+<script>
+
+function calculateSleep(){
+
+const wake=document.getElementById("wakeTime").value;
+
+if(!wake){
+alert("Please select wake-up time");
+return;
+}
+
+let parts=wake.split(":");
+
+let hour=parseInt(parts[0]);
+let minute=parseInt(parts[1]);
+
+let wakeMinutes=hour*60+minute;
+
+let cycles=[6,5,4];
+
+let output="";
+
+cycles.forEach(cycle=>{
+
+let sleep=wakeMinutes-(cycle*90)-15;
+
+while(sleep<0){
+sleep+=1440;
+}
+
+let h=Math.floor(sleep/60);
+let m=sleep%60;
+
+let ampm=h>=12?"PM":"AM";
+
+h=h%12;
+if(h==0) h=12;
+
+output+=`<li>${h}:${m.toString().padStart(2,"0")} ${ampm} (${cycle} Sleep Cycles)</li>`;
+
+});
+
+document.getElementById("times").innerHTML=output;
+
+document.getElementById("result").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
