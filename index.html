@@ -3,170 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sleep Calculator</title>
 
-<meta name="description" content="Free Sleep Calculator - Find the best time to sleep and wake up using 90-minute sleep cycles.">
+<title>Sleep Calculator - Best Bedtime & Wake Up Time</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+<meta name="description" content="Professional Sleep Calculator to calculate the best bedtime and wake-up time using 90-minute sleep cycles.">
 
-body{
-background:#0f172a;
-color:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-padding:20px;
-}
+<meta name="keywords" content="Sleep Calculator, Bedtime Calculator, Sleep Cycle Calculator">
 
-.container{
-background:#1e293b;
-padding:30px;
-border-radius:18px;
-width:100%;
-max-width:420px;
-box-shadow:0 10px 30px rgba(0,0,0,.4);
-}
+<meta name="author" content="Sleep Calculator">
 
-h1{
-text-align:center;
-margin-bottom:20px;
-}
+<link rel="stylesheet" href="style.css">
 
-p{
-text-align:center;
-margin-bottom:20px;
-color:#cbd5e1;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-label{
-display:block;
-margin:15px 0 8px;
-}
-
-input{
-width:100%;
-padding:12px;
-border:none;
-border-radius:10px;
-font-size:16px;
-}
-
-button{
-width:100%;
-margin-top:20px;
-padding:14px;
-background:#22c55e;
-color:#fff;
-border:none;
-border-radius:10px;
-font-size:18px;
-cursor:pointer;
-}
-
-button:hover{
-background:#16a34a;
-}
-
-.result{
-margin-top:25px;
-padding:15px;
-background:#334155;
-border-radius:10px;
-}
-
-.result h3{
-margin-bottom:10px;
-}
-
-.result ul{
-padding-left:20px;
-}
-
-.result li{
-margin:8px 0;
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
 
-<div class="container">
+<header>
 
-<h1>😴 Sleep Calculator</h1>
+<div class="logo">
+😴 Sleep Calculator
+</div>
 
-<p>Select your wake-up time</p>
+<nav>
 
-<label>Wake Up Time</label>
+<a href="#">Home</a>
+
+<a href="#calculator">Calculator</a>
+
+<a href="#about">About</a>
+
+<a href="#faq">FAQ</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Find The Perfect Time To Sleep</h1>
+
+<p>
+Calculate your ideal bedtime or wake-up time based on healthy 90-minute sleep cycles.
+</p>
+
+<a href="#calculator" class="btn">
+Start Calculator
+</a>
+
+</section>
+
+<section id="calculator" class="calculator">
+
+<div class="card">
+
+<h2>Sleep Calculator</h2>
+
+<label>
+Wake Up Time
+</label>
 
 <input type="time" id="wakeTime">
 
-<button onclick="calculateSleep()">
-Calculate Bedtime
+<button id="calculateBtn">
+Calculate
 </button>
 
-<div class="result" id="result" style="display:none;">
-<h3>Best Time To Sleep</h3>
-<ul id="times"></ul>
-</div>
+<div id="result">
 
 </div>
 
-<script>
+</div>
 
-function calculateSleep(){
+</section>
 
-const wake=document.getElementById("wakeTime").value;
+<section id="about">
 
-if(!wake){
-alert("Please select wake-up time");
-return;
-}
+<h2>About Sleep Calculator</h2>
 
-let parts=wake.split(":");
+<p>
 
-let hour=parseInt(parts[0]);
-let minute=parseInt(parts[1]);
+Sleep cycles usually last about 90 minutes.
 
-let wakeMinutes=hour*60+minute;
+This calculator helps you wake up feeling refreshed.
 
-let cycles=[6,5,4];
+</p>
 
-let output="";
+</section>
 
-cycles.forEach(cycle=>{
+<section id="faq">
 
-let sleep=wakeMinutes-(cycle*90)-15;
+<h2>Frequently Asked Questions</h2>
 
-while(sleep<0){
-sleep+=1440;
-}
+<div class="faq">
 
-let h=Math.floor(sleep/60);
-let m=sleep%60;
+<h3>How many hours should I sleep?</h3>
 
-let ampm=h>=12?"PM":"AM";
+<p>
+Adults generally need 7–9 hours of sleep.
+</p>
 
-h=h%12;
-if(h==0) h=12;
+</div>
 
-output+=`<li>${h}:${m.toString().padStart(2,"0")} ${ampm} (${cycle} Sleep Cycles)</li>`;
+<div class="faq">
 
-});
+<h3>What is a sleep cycle?</h3>
 
-document.getElementById("times").innerHTML=output;
+<p>
+One complete sleep cycle lasts about 90 minutes.
+</p>
 
-document.getElementById("result").style.display="block";
+</div>
 
-}
+</section>
 
-</script>
+<footer>
+
+<p>
+
+© 2026 Sleep Calculator
+
+</p>
+
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
