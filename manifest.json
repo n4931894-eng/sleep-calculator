@@ -1,1 +1,31 @@
-
+{
+  "name": "Sleep Calculator",
+  "short_name": "SleepCalc",
+  "description": "Professional Sleep Calculator with 90-minute sleep cycle.",
+  "start_url": "/sleep-calculator/",
+  "scope": "/sleep-calculator/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#22c55e",
+  "orientation": "portrait",
+  "lang": "en",
+  "categories": [
+    "health",
+    "lifestyle",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
