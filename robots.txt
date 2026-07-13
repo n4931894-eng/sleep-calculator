@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
 
+Sitemap: https://n4931894-eng.github.io/sleep-calculator/sitemap.xml
